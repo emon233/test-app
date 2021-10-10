@@ -4,6 +4,8 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
+use App\Http\Controllers\Package\LaravelFfmpegController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,4 +36,9 @@ require __DIR__ . '/auth.php';
 
 Route::get('/test', function () {
     return view('packages.test.index');
+});
+
+Route::prefix('/package-laravel-ffmpeg')->name('package.laravel-ffmpeg.')->group(function () {
+    Route::get('/index', [LaravelFfmpegController::class, 'index'])->name('index');
+    Route::post('/store', [LaravelFfmpegController::class, 'store'])->name('store');
 });
