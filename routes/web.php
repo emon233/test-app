@@ -41,4 +41,5 @@ Route::get('/test', function () {
 Route::prefix('/package-laravel-ffmpeg')->name('package.laravel-ffmpeg.')->group(function () {
     Route::get('/index', [LaravelFfmpegController::class, 'index'])->name('index');
     Route::post('/store', [LaravelFfmpegController::class, 'store'])->name('store');
+    Route::get('/show/{id}', [LaravelFfmpegController::class, 'show'])->name('show');
 });

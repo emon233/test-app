@@ -24,7 +24,7 @@
                                     <td>{{ $item->original_name }}</td>
                                     <td>{{ $item->access_url }}</td>
                                     <td>
-                                        <a href="#!">Look Up</a>
+                                        <a href="{{ route('package.laravel-ffmpeg.show', ['id' => $item->id]) }}">Look Up</a>
                                     </td>
                                 </tr>
                                 @endforeach

@@ -57,6 +57,7 @@ class LaravelFfmpegController extends Controller
                         'file_name' => $file_name,
                         'file_extension' => '.mp4',
                         'file_mime_type' => 'video/mp4',
+                        'file_resolution' => $this->ratios[$key],
                     ]);
                 }
                 $this->generalSuccess("Success");
@@ -71,6 +72,15 @@ class LaravelFfmpegController extends Controller
         }
     }
 
+    public function show($id)
+    {
+        $media = Media::where('id', $id)->first();
+
+        $videos = Media::where('original_name', $media->original_name)->get();
+
+        return view('packages.laravel-ffmpeg.show', compact('media', 'videos'));
+    }
+
     protected function uploadOriginalVideo($file, $file_name, $disk = 'local')
     {
         return $file->storeAs($disk, $file_name);
@@ -78,7 +88,7 @@ class LaravelFfmpegController extends Controller
 
     protected function convertVideo($originalFileName, $origianlFileExtension, $key)
     {
-        $fileName = str_replace($origianlFileExtension, '', $originalFileName) . '-' . $this->ratios[$key] . 'p.mp4';
+        $fileName = str_replace('.' . $origianlFileExtension, '', $originalFileName) . '-' . $this->ratios[$key] . 'p.mp4';
 
         try {
             $converted = FFMpeg::fromDisk('public')
