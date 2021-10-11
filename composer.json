@@ -32,9 +32,9 @@
             "Database\\Seeders\\": "database/seeders/"
         },
         "files": [
-            "App/Helpers/arrays.php",
-            "App/Helpers/constants.php",
-            "App/Helpers/functions.php"
+            "app/Helpers/arrays.php",
+            "app/Helpers/constants.php",
+            "app/Helpers/functions.php"
         ]
     },
     "autoload-dev": {
