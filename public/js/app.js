@@ -4582,7 +4582,11 @@ function Dashboard(props) {
                   children: "Documentation"
                 })
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-                "class": "col-12 col-md-4"
+                "class": "col-12 col-md-4",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("a", {
+                  href: "/package-laravel-ffmpeg/index",
+                  children: "Working Page"
+                })
               })]
             })
           })

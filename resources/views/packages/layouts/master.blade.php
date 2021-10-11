@@ -7,7 +7,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AdminLTE 3 | Starter</title>
+    <title>@yield('page-title')</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -15,6 +15,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link rel="stylesheet" href="{{ asset('assets/adminLTE/plugins/fontawesome-free/css/all.min.css') }}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('assets/adminLTE/dist/css/adminlte.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/custom/styles.css') }}">
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.6.8/plyr.css" />
 </head>
 <body class="sidebar-closed sidebar-collapse">
     <div class="wrapper">
@@ -66,5 +68,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src="{{ asset('assets/adminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <!-- AdminLTE App -->
     <script src="{{ asset('assets/adminLTE/dist/js/adminlte.min.js') }}"></script>
+    <script src="https://cdn.plyr.io/3.6.8/plyr.polyfilled.js"></script>
+
+    @yield('content-scripts')
 </body>
 </html>

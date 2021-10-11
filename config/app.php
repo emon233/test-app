@@ -179,6 +179,11 @@ return [
          * Laravel Log Viewer
          */
         Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
+
+        /**
+         * Laravel FFMPEG
+         */
+        ProtoneMedia\LaravelFFMpeg\Support\ServiceProvider::class,
     ],
 
     /*
@@ -233,6 +238,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
+        /** Laravel-ffmpeg */
+        'FFMpeg' => ProtoneMedia\LaravelFFMpeg\Support\FFMpeg::class
     ],
 
 ];

@@ -23,7 +23,7 @@ export default function Dashboard(props) {
                                     <a href="https://github.com/protonemedia/laravel-ffmpeg" target="_blank">Documentation</a>
                                 </div>
                                 <div class="col-12 col-md-4">
-
+                                    <a href="/package-laravel-ffmpeg/index">Working Page</a>
                                 </div>
                             </div>
                         </div>
