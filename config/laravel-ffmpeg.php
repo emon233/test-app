@@ -2,12 +2,12 @@
 
 return [
     'ffmpeg' => [
-        'binaries' => 'FFMPEG\bin\ffmpeg.exe',
+        'binaries' => '/usr/bin/ffmpeg',
         'threads'  => 12,
     ],
 
     'ffprobe' => [
-        'binaries' => 'FFMPEG\bin\ffprobe.exe',
+        'binaries' => '/usr/bin/ffprobe',
     ],
 
     'timeout' => 3600,

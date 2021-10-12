@@ -17,7 +17,7 @@ class BaseWebController extends Controller
 
     public function generalError($message = null)
     {
-        isNull($message) ? "" : Log::error($message);
+        Log::error($message);
         Session::flush('error', $message);
     }
 }

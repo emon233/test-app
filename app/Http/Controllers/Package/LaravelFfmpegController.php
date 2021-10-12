@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Package;
 
 ini_set('max_execution_time', 2400);
+// ini_set('upload_max_filesize', '2048M');
+
 
 use FFMpeg;
 use App\Http\Controllers\BaseWebController as Controller;
@@ -28,13 +30,16 @@ class LaravelFfmpegController extends Controller
     public function store(Request $request)
     {
         if ($request->has('video_file')) {
+            \Log::info("File Found");
             try {
-                $originalFileName = $request->file('video_file')->getClientOriginalName();
-                $extension = $request->file('video_file')->getClientOriginalExtension();
-                $mimeType = $request->file('video_file')->getMimeType();
+                $originalFile = $request->file('video_file');
+                $originalFileName = $originalFile->getClientOriginalName();
+                $extension = $originalFile->getClientOriginalExtension();
+                // $mimeType = $originalFile->getMimeType();
+                $mimeType = ".mp4";
 
                 $file_name = time() . '-' . rand(10, 99) . '-' . rand(10, 99) . '-' . rand(100, 999);
-                $upload = $this->uploadOriginalVideo($request->file('video_file'), $file_name . '.' . $extension, 'public');
+                $upload = $this->uploadOriginalVideo($originalFile, $file_name . '.' . $extension, 'public');
 
                 $temporaryFileName = str_replace('public/', '', $upload);
                 $convertedFileNames = [];
@@ -63,11 +68,11 @@ class LaravelFfmpegController extends Controller
                 $this->generalSuccess("Success");
                 return redirect()->back();
             } catch (\Exception $ex) {
-                dd($ex->getMessage());
                 $this->generalError($ex->getMessage());
                 return redirect()->back();
             }
         } else {
+            \Log::info("File Not Found");
             return redirect()->back();
         }
     }
@@ -83,6 +88,7 @@ class LaravelFfmpegController extends Controller
 
     protected function uploadOriginalVideo($file, $file_name, $disk = 'local')
     {
+        \Log::info("File Name: " . $file_name);
         return $file->storeAs($disk, $file_name);
     }
 
